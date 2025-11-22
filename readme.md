@@ -6,6 +6,14 @@ Este projeto foi desenvolvido como parte do Desafio Técnico GDASH. Ele integra 
 
 ---
 
+## Preview do Dashboard
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Tiagliveira/desafio-gdash/tiago-oliveira-pereira/frontend/public/ReadmeDesafioGDASH.png" width="600" height="auto" />
+</p>
+
+---
+
 ### Demonstração
 
  Assista ao vídeo explicativo no YouTube  
@@ -13,19 +21,16 @@ Este projeto foi desenvolvido como parte do Desafio Técnico GDASH. Ele integra 
 
 ---
 
-### Arquitetura do Sistema
-
-O sistema segue um fluxo de dados unidirecional e resiliente, garantindo que nenhuma coleta seja perdida:  
+## Arquitetura do Sistema
 
 ```mermaid
-
-  A[Python Coletor] -->|JSON| B(RabbitMQ)
+flowchart LR
+  A[Coletor Python] -->|JSON| B(RabbitMQ)
   B -->|Consumo| C[Go Worker]
-  C -->|HTTP POST| D[NestJS API]
+  C -->|HTTP POST| D[API NestJS]
   D -->|Persistência| E[(MongoDB)]
   F[React Frontend] -->|HTTP GET| D
 ```
-
 - Python (Producer): coleta dados da API Open-Meteo a cada 30m (Temperatura, Vento, Umidade, Máx/Min).  
 - RabbitMQ (Broker): garante a fila e integridade das mensagens.  
 - Go (Consumer): worker de alta performance que processa a fila e entrega para a API.  
@@ -70,15 +75,13 @@ Pré-requisitos
 
 #### Passo a Passo
 
-`bash
+## Como rodar o projeto
 
-Clone o repositório
+```bash
 git clone https://github.com/Tiagliveira/desafio-gdash.git
 cd desafio-gdash
-
-Suba os containers
 docker-compose up --build
-`
+```
 
 #### Aguarde alguns minutos na primeira vez para download das imagens e compilação.  
 
@@ -86,12 +89,13 @@ docker-compose up --build
 
 ## Acesse a Aplicação
 
-- Frontend: http://localhost:5173  
-- API: http://localhost:3000  
+
+- Frontend: ```http://localhost:5173```  
+- API: ```http://localhost:3000```  
 
 Credenciais de Acesso (Seeding Automático)
-- E-mail: admin@gdash.com  
-- Senha: 123456  
+- E-mail: ```admin@gdash.com```  
+- Senha: ```123456```  
 
 ---
 
@@ -101,7 +105,7 @@ Você pode acompanhar os logs no terminal:
 
 - Python: verá [ENVIADO] a cada ciclo.  
 - Go: verá Processando mensagem... e Sucesso! 201 Created.  
-- RabbitMQ: monitorar em http://localhost:15672 (User/Pass: guest).  
+- RabbitMQ: monitorar em ```http://localhost:15672```(User/Pass: guest).  
 
 ---
 
