@@ -16,7 +16,10 @@ Este projeto foi desenvolvido como parte do Desafio Técnico GDASH. Ele integra 
 ### Demonstração
 
  Assista ao vídeo explicativo no YouTube  
-[(Mostrando a arquitetura, containers Docker subindo e funcionalidades do sistema)](https://youtu.be/jp26NIm6Bbk)  
+
+<a href="https://youtu.be/jp26NIm6Bbk" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" width="60" alt="Assista no YouTube" />
+</a>
 
 ---
 
